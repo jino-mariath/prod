@@ -7,7 +7,7 @@ node ('master') {
         stage('Shoreside Production') {
         timeout(time: 2, unit: 'MINUTES') {
 		String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
-           	input message: 'Initiating deployment process, Promote P@S Version :' + shore_version + to Shoreside Production, Shall we Proceed?,
+           	input message: 'Initiating deployment process, Promote P@S Version :' + shore_version +' to Shoreside Production, Shall we Proceed?',
             	ok: 'Proceed!'
 	        }
 	    }
