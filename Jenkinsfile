@@ -7,7 +7,8 @@ node ('master') {
         stage('Shoreside Production') {
         timeout(time: 2, unit: 'MINUTES') {
 		String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
-           	input message: shore_version,
+		String notes = "Shell we procced to deploy P@S Code to shore side server?"
+           	input message: notes + shore_version,
             	ok: 'Proceed!'
 	        }
 	    }
@@ -16,6 +17,7 @@ node ('master') {
 	    def user = err.getCauses()[0].getUser()
 	    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
         	didTimeout = true
+		echo "Sorry! No input was received before timeout" 
 	    } else {
         	userInput = false
 	        echo "Aborted by: [${user}]"
