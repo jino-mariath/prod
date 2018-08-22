@@ -6,8 +6,9 @@ node ('master') {
     try {
         stage('Shoreside Production') {
         timeout(time: 2, unit: 'MINUTES') {
-            input message: 'Please confirm can we deploy P@S code to Shoreside production ?',
-            ok: 'Proceed!'
+		String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
+            	input message: 'Shall we deploy P@S code' + shore_version + ' to Shoreside production ?',
+            	ok: 'Proceed!'
             }
 	}
 
