@@ -7,7 +7,7 @@ node ('master') {
         stage('Shoreside Production') {
         timeout(time: 2, unit: 'MINUTES') {
             input message: 'Please confirm can we deploy P@S code to Shoreside production ?',
-            ok: 'Fire!'
+            ok: 'Proceed!'
             }
 	}
 
