@@ -12,6 +12,37 @@ node ('master') {
 	        }
 	    }
 
+
+	stage('Test Ship Sites'){
+		echo 'Deploying P@S code to 17 Test ship instance. '
+
+		parallel ('PAS_RUBY': {
+                	echo 'Starting RUBY'
+			sleep 10
+                	},
+
+              	          PAS_SUN: {
+              		echo 'Copying P@S package to Dev Site'
+              		echo 'Copying Deployment files...'
+              		echo 'P@S code deployed to Dev site Successfully...'
+              		sleep 10
+        	      	},
+		)
+
+		parallel ('Behat Execution': {
+			echo 'Behat execution'
+			sleep 10
+			}
+
+			PAS_Behat_DB: {
+			echo 'Behat DB execution'
+			sleep 10
+			}
+		)
+	}
+
+
+
 	} catch(err) { // timeout reached or input false
 	    def user = err.getCauses()[0].getUser()
 	    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
