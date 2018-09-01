@@ -23,7 +23,6 @@ node ('master') {
 				sh 'ls- la'
 				sleep 10
             			} catch (error) {
-				     propagate: true
 				     result = "FAIL"
 				}
                 	},
