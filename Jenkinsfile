@@ -28,16 +28,8 @@ node ('master') {
               		sleep 10
         	      	},
 
-				Behat Execution: {
-			echo 'Behat execution'
-			sleep 10
-			},
-
-				PAS_Behat_DB: {
-			echo 'Behat DB execution'
-			sleep 10
-			}
 		)
+	}
 
 
 	} catch(err) { // timeout reached or input false
