@@ -23,7 +23,8 @@ node ('master') {
 				sh 'ls- la'
 				sleep 10
 				} catch (error) {
-				    currentBuild.result = 'FAILURE'
+				    println 'build is failed.'
+				    //currentBuild.result = 'FAILURE'
 				}
                 	},
 
@@ -43,8 +44,8 @@ node ('master') {
           }
         }
 
-	} catch(error) { // timeout reached or input false
-	    def user = error.getCauses()[0].getUser()
+	} catch(err) { // timeout reached or input false
+	    def user = err.getCauses()[0].getUser()
 	    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
         	didTimeout = true
 		echo "Sorry! No input was received before timeout" 
