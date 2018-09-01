@@ -26,10 +26,9 @@ node ('master') {
               		echo 'Copying Deployment files...'
               		echo 'P@S code deployed to Dev site Successfully...'
               		sleep 10
-        	      	}
-		)
+        	      	},
 
-		parallel ('Behat Execution': {
+			Behat Execution: {
 			echo 'Behat execution'
 			sleep 10
 			},
