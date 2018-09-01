@@ -22,10 +22,16 @@ node ('master') {
                 		echo 'Starting RUBY'
 				sh 'ls- la'
 				sleep 10
-				} catch (error) {
-				    println 'build is failed.'
-				    //currentBuild.result = 'FAILURE'
-				}
+				} catch(err) { // timeout reached or input false
+			            def user = err.getCauses()[0].getUser()
+            			if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
+                			didTimeout = true
+                			echo "Sorry! No input was received before timeout"
+            			} else {
+                			userInput = false
+               				 echo "Aborted by: [${user}]"
+            			}
+
                 	},
 
 
