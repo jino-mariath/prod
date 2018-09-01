@@ -21,25 +21,23 @@ node ('master') {
 			sleep 10
                 	},
 
-              	          PAS_SUN: {
+              	        	PAS_SUN: {
               		echo 'Copying P@S package to Dev Site'
               		echo 'Copying Deployment files...'
               		echo 'P@S code deployed to Dev site Successfully...'
               		sleep 10
         	      	},
 
-			Behat Execution: {
+				Behat Execution: {
 			echo 'Behat execution'
 			sleep 10
 			},
 
-			PAS_Behat_DB: {
+				PAS_Behat_DB: {
 			echo 'Behat DB execution'
 			sleep 10
 			}
 		)
-	}
-
 
 
 	} catch(err) { // timeout reached or input false
@@ -53,30 +51,3 @@ node ('master') {
     	    }
 	}
 }
-
-
-//node {
-//    if (didTimeout) {
-//       // do something on timeout
-//        echo "no input was received before timeout"
-//    } else if (userInput == true) {
-//        // do something
-//        echo "this was successful"
-//   } else {
-//        // do something else
-//        echo "this was not successful"
-//        currentBuild.result = 'FAILURE'
-//    } 
-//}
-
-
-
-
-
-//    } catch(error) {
-//        throw error
-//    } finally {
-//        
-//    }
-//   echo 'Execution Completed Successfully......!'
-//}
