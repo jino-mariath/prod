@@ -22,7 +22,9 @@ node ('master') {
                 		echo 'Starting RUBY'
 				sh 'ls- la'
 				sleep 10
-            			}
+            			} catch (error) {
+				     propagate: false
+				}
                 	},
 
 
