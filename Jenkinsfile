@@ -16,9 +16,15 @@ node ('master') {
 	stage('Test Ship Sites'){
 		echo 'Deploying P@S code to 17 Test ship instance. '
 
-		parallel ('PAS_RUBY': {
-                	echo 'Starting RUBY'
-			sleep 10
+		parallel (
+			'PAS_RUBY': {
+			   try {
+                		echo 'Starting RUBY'
+				sh 'ls- la'
+				sleep 10
+				} catch (error) {
+					throw error
+				}
                 	},
 
               	        	PAS_SUN: {
@@ -32,8 +38,8 @@ node ('master') {
 	}
 
 
-	} catch(err) { // timeout reached or input false
-	    def user = err.getCauses()[0].getUser()
+	} catch(error) { // timeout reached or input false
+	    def user = error.getCauses()[0].getUser()
 	    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
         	didTimeout = true
 		echo "Sorry! No input was received before timeout" 
