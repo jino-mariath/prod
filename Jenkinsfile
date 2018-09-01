@@ -31,7 +31,7 @@ node ('master') {
                 			userInput = false
                				 echo "Aborted by: [${user}]"
             			}
-
+			    }
                 	},
 
 
