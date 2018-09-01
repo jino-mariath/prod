@@ -39,6 +39,7 @@ node ('master') {
 
 
 	} catch(error) { // timeout reached or input false
+	    println (error)
 	    def user = error.getCauses()[0].getUser()
 	    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
         	didTimeout = true
