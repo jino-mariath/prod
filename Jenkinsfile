@@ -36,7 +36,11 @@ node ('master') {
 
 		)
 	}
-
+	post { 
+        always { 
+            echo 'Exection completed !'
+          }
+        }
 
 	} catch(error) { // timeout reached or input false
 	    println (error)
