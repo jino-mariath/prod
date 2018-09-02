@@ -33,8 +33,8 @@ node ('master') {
 		)
 
 		} catch (error) {
-			 currentBuild.result = 'UNSTABLE'
-                         propagate: false
+			 //currentBuild.result = 'UNSTABLE'
+                         //propagate: false
 		}
 	}
 
