@@ -11,6 +11,8 @@ node ('master') {
                         println ("Yes, Autherised User :" + userName)
 			def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         		println upstream?.shortDescription
+			def buildLog = currentBuild.rawBuild.log
+			println buildLog
                 }
 	}
 }
