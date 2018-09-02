@@ -12,23 +12,22 @@ node ('master') {
 	        }
 	    }
 
-try {
-   stage('end-to-end-tests') {
-       echo 'Execution ........'
+	try {
+	   stage('end-to-end-tests') {
+       		echo 'Execution ........'
+		ls- la
+       	   }
+	} catch (e) {
+   		result = "FAIL" // make sure other exceptions are recorded as failure too
+	}
 
-	ls- la
-       }
-} catch (e) {
-   result = "FAIL" // make sure other exceptions are recorded as failure too
-}
-
-stage('deploy') {
-   if (result.equals("SUCCESS")) {
-      build 'deploy'
-   } else {
-      echo "Cannot deploy without successful build" // it is important to have a deploy stage even here for the current visualization
-   }
-}
+	try { 
+	  stage('deploy') {
+   	  echo '2nd Execution'
+	  sh 'ls- la'
+	  }
+	} catch (e) {
+	}	
 
 	} catch(err) { // timeout reached or input false
 	    def user = err.getCauses()[0].getUser()
