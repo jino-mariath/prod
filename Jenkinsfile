@@ -14,7 +14,7 @@ node ('master') {
         		println upstream?.shortDescription
 
 
-			def job = jenkins.model.Jenkins.instance.getItem("Hourly")
+			def job = jenkins.model.Jenkins.instance.getItem("PAS_DEV")
 			println job
 
 
