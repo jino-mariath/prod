@@ -13,12 +13,10 @@ node ('master') {
 	    }
 
 	stage ('UserName') {
-		node {
   			wrap([$class: 'BuildUser']) {
     			def user = env.BUILD_USER_ID
   			}		
 		}
-	}
 
 
 	stage('Test Ship Sites'){
