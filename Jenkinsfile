@@ -23,7 +23,8 @@ node ('master') {
 				sh 'ls- la'
 				sleep 10
             			} catch (error) {
-					echo 'Build Failed.'
+					currentBuild.result = 'UNSTABLE'
+				        result = "FAIL"
 				}
                 	},
 
