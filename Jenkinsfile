@@ -4,6 +4,13 @@ import jenkins.model.Jenkins
 
 node ('master') {
 
+	wrap([$class: 'BuildUser']) {
+                echo "userId=${BUILD_USER_ID},fullName=${BUILD_USER},email=${BUILD_USER_EMAIL}"
+                def userId = env.BUILD_USER_ID
+                def userName = env.BUILD_USER
+                if((userId == "pc03069") || (userId == "pc05668") ||  (userId == "pc08300")) {
+                        println ("Yes, Autherised User :" + userName)
+
 	 try {
                 stage('Shoreside Production') {
                 timeout(time: 2, unit: 'MINUTES') {
@@ -40,4 +47,7 @@ node ('master') {
         }
 
       } 
+    }else {
+	println "sorry, Normal. User"
+   }
 }
