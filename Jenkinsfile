@@ -12,11 +12,15 @@ node ('master') {
 	        }
 	    }
 
-	stage ('UserName') {
-  			wrap([$class: 'BuildUser']) {
-    			def user = env.BUILD_USER_ID
-  			}		
-		}
+  	stages {
+    		stage('build user') {
+      		steps {
+        		wrap([$class: 'BuildUser']) {
+          		sh 'echo "${BUILD_USER}"'
+        		}
+      			}
+    		}
+  	}
 
 
 	stage('Test Ship Sites'){
