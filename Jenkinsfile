@@ -12,18 +12,17 @@ node ('master') {
 	        }
 	    }
 
+	stage ('UserName') {
+		user = User.current().getFullName()
+		println 'Build Triggered by ;' + user
+	}
 
 	stage('Test Ship Sites'){
 		echo 'Deploying P@S code to 17 Test ship instance. '
 		parallel (
 			PAS_RUBY: {
                 		echo 'Starting RUBY'
-				def jobBuild = build(job: 'Test')//, propagate: false)
-				//def jobResult = jobBuild.getResult()
-       				//echo "Build of '${job}' returned result: ${jobResult}"
-       				//results[job] = jobResult
-				//build(job: 'Test', wait: false)
-				//sh 'ls- la'
+				def jobBuild = build(job: 'Test')
                 	},
 
 
@@ -37,9 +36,6 @@ node ('master') {
 
 	}
 
-	stage('Version') {
-		echo 'Execuitng Version'
-	}
 
 
 	} catch(err) { // timeout reached or input false
