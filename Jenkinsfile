@@ -13,12 +13,10 @@ node ('master') {
 			def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         		println upstream?.shortDescription
 			
-def currentBuild = Thread.currentThread().executable
 
 def job = hudson.model.Hudson.instance.getJob("PAS_DEV")
 def cause = new hudson.model.Cause.UpstreamCause(currentBuild)
 def causeAction = new hudson.model.CauseAction(cause) 
-			println currentBuild
 			println job
 			println cause
 			println causeAction
