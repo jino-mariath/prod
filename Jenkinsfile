@@ -12,14 +12,9 @@ node ('master') {
                         println ("Yes, Autherised User :" + userName)
 			def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         		println upstream?.shortDescription
-			
+			def job = hudson.getItem(PAS_DEV)	
 
-def job = hudson.model.Hudson.instance.getJob("PAS_DEV")
-def cause = new hudson.model.Cause.UpstreamCause(currentBuild)
-def causeAction = new hudson.model.CauseAction(cause) 
 			println job
-			println cause
-			println causeAction
                 }
 	}
 }
