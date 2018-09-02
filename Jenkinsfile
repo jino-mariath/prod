@@ -7,9 +7,9 @@ node ('master') {
 		def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         	def job = upstream?.shortDescription
 		if(job != null) {
-		println job
+		    println job
 			
-	try {
+			try {
         	stage('Shoreside Production') {
         	timeout(time: 2, unit: 'MINUTES') {
                 	String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
