@@ -18,9 +18,9 @@ node ('master') {
 		parallel (
 			PAS_RUBY: {
                 		echo 'Starting RUBY'
-				propagate: false
-				sh 'ls- la'
-				sleep 10
+				build(job: 'Test') propagate: false
+				//build(job: 'PAS_SONAR', wait: false)
+				//sh 'ls- la'
                 	},
 
 
