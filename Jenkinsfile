@@ -24,7 +24,7 @@ node ('master') {
 				sleep 10
             			} catch (error) {
 					currentBuild.result = 'SUCCESS'
-					propagate: false
+					propagate: true
 				}
                 	},
 
