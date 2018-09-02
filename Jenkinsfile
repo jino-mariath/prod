@@ -3,8 +3,6 @@ import hudson.FilePath
 import jenkins.model.Jenkins
 
 node ('master') {
-
-node ('master') {
     try {
         stage('Shoreside Production') {
         timeout(time: 2, unit: 'MINUTES') {
