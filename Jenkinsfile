@@ -14,8 +14,8 @@ node ('master') {
         		println upstream?.shortDescription
 
 
-			def test = build.getUpstreamBuilds()
-			println test
+			def job = jenkins.model.Jenkins.instance.getItem("Hourly")
+			println job
 
 
                 }
