@@ -12,7 +12,7 @@ node ('master') {
 			def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         		println upstream?.shortDescription
 			def buildLog = currentBuild.rawBuild.log
-			println buildLog
+			println buildLog?.shortDescription
                 }
 	}
 }
