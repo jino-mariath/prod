@@ -18,8 +18,8 @@ node ('master') {
 		parallel (
 			PAS_RUBY: {
                 		echo 'Starting RUBY'
-				sh 'ls -la' 
-				//propagate: false
+				sh 'ls- la' 
+				propagate: false
 				sleep 10
                 	},
 
