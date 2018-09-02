@@ -48,8 +48,7 @@ node ('master') {
             }
         }
 	} else {
-	    println "Job Triggered by User :" + userName
+	    println "Job Triggered by User : [${user}]"
         } 
-        echo ' Normal Execution starts'
       }
 }
