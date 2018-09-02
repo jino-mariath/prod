@@ -34,6 +34,7 @@ node ('master') {
 			    } catch (e) {
    				result = "FAIL" // make sure other exceptions are recorded as failure too
 			    }
+			},
 
 			Deploy: {
    				if (result.equals("SUCCESS")) {
@@ -41,8 +42,10 @@ node ('master') {
    				} else {
       				echo "Cannot deploy without successful build" // it is important to have a deploy stage even here for the current visualization
    				}
-			}			
-
+			}
+		)
+			
+	    }
 
 	} catch(err) { // timeout reached or input false
 	    def user = err.getCauses()[0].getUser()
