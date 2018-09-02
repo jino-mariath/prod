@@ -9,10 +9,6 @@ node ('master') {
 		def userId = env.BUILD_USER_ID
 		def userName = env.BUILD_USER 
                         println ("Yes, Autherised User :" + userName)
-        		def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
-        		echo upstream?.shortDescription
-			println "Upstream Job :" + upstream
-                        
                 }
 	}
 }
