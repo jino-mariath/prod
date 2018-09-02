@@ -11,11 +11,9 @@ node ('master') {
 		def userName = env.BUILD_USER 
                         println ("Yes, Autherised User :" + userName)
 			def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
-        		println upstream?.shortDescription
-
-
-			def job = jenkins.model.Jenkins.instance.getItem("PAS_DEV")
+        		def job = upstream?.shortDescription
 			println job
+
 
 
                 }
