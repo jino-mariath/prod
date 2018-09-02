@@ -12,10 +12,10 @@ node ('master') {
 	        }
 	    }
 
-	stage ('UserName') {
-		user = User.current().getFullName()
-		println 'Build Triggered by ;' + user
-	}
+	//stage ('UserName') {
+	//	user = User.current().getFullName()
+	//	println 'Build Triggered by ;' + user
+	//}
 
 	stage('Test Ship Sites'){
 		echo 'Deploying P@S code to 17 Test ship instance. '
