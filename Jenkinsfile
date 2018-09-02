@@ -16,11 +16,8 @@ node ('master') {
 
 			def build = Thread.currentThread().executable
 			def test = build.getUpstreamBuilds()
-			for (up in test)
-			{
-			manager.listener.logger.println "test build project: " + up
-			}
-
+			println build
+			println test
 
 
                 }
