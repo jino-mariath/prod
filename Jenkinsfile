@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 import hudson.FilePath
 import jenkins.model.Jenkins
+import hudson.model.User
 
 node ('master') {
     try {
@@ -13,9 +14,8 @@ node ('master') {
 	    }
 
     		stage('build user') {
-        		wrap([$class: 'BuildUser']) {
-          		sh 'echo "${BUILD_USER}"'
-        		}
+        		def user = User.current()
+			println user
      		}
 
 
