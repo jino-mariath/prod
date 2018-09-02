@@ -8,6 +8,9 @@ node ('master') {
     		echo "userId=${BUILD_USER_ID},fullName=${BUILD_USER},email=${BUILD_USER_EMAIL}"
 		def userId = env.BUILD_USER_ID
 		def userName = env.BUILD_USER 
+        		def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
+        		echo upstream?.shortDescription
+
 		if((userId == "pc03069") || (userId == "pc05668") ||  (userId == "pc08300")) {
                         println ("Yes, Autherised User :" + userName)
                         
@@ -65,7 +68,8 @@ node ('master') {
 
 			} else {
                         
-			println ("Sorry, User is - : " + ${BUILD_USER_ID})
+			println ("Sorry, User is - : " + userName)
+			echo ' Normal Execution starts'
                         }
                 }
 	}
