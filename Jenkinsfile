@@ -15,11 +15,10 @@ node ('master') {
 
 	stage('Test Ship Sites'){
 		echo 'Deploying P@S code to 17 Test ship instance. '
-		try {
 		parallel (
 			stage ('PAS_RUBY') {
                 		echo 'Starting RUBY'
-				sh 'ls- la'
+				sh 'ls- la' , propagate: false
 				sleep 10
                 	},
 
@@ -32,10 +31,6 @@ node ('master') {
         	      	}
 		)
 
-		} catch (error) {
-			 //currentBuild.result = 'UNSTABLE'
-                         //propagate: false
-		}
 	}
 
 	} catch(err) { // timeout reached or input false
