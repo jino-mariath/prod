@@ -50,6 +50,6 @@ node ('master') {
 	} else {
 	    println "Job Triggered by User :" + userName
         } 
-        echo ' Normal Execution starts
+        echo ' Normal Execution starts'
       }
 }
