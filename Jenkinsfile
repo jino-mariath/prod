@@ -49,6 +49,12 @@ node ('master') {
         }
 	} else {
 	    println "Job Triggered by User : [${user}]"
+
+	stage('Version') {
+                echo 'Execuitng Version'
+        }
+
+
         } 
       }
 }
