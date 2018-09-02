@@ -15,10 +15,8 @@ node ('master') {
 
 	stage('Test Ship Sites'){
 		echo 'Deploying P@S code to 17 Test ship instance. '
-
+		try {
 		parallel (
-			try {
-
 			stage ('PAS_RUBY') {
                 		echo 'Starting RUBY'
 				sh 'ls- la'
@@ -31,12 +29,13 @@ node ('master') {
               		echo 'Copying Deployment files...'
               		echo 'P@S code deployed to Dev site Successfully...'
               		sleep 10
-        	      	},
+        	      	}
+		)
+
 		} catch (error) {
 			 currentBuild.result = 'UNSTABLE'
                          propagate: true
 		}
-		)
 	}
 
 	} catch(err) { // timeout reached or input false
