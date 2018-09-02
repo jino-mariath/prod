@@ -25,11 +25,6 @@ node ('master') {
 				     }
 			}
 
-				for (cause in manager.build.causes)
-				{
-   				 printCausesRecursively(cause)
-			}
-
 
                 }
 	}
