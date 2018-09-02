@@ -18,8 +18,10 @@ node ('master') {
 		parallel (
 			PAS_RUBY: {
                 		echo 'Starting RUBY'
-				build(job: 'Test')
-				propagate: false
+				def jobBuild = build job: Test, propagate: false
+				def jobResult = jobBuild.getResult()
+       				echo "Build of '${job}' returned result: ${jobResult}"
+       				results[job] = jobResult
 				//build(job: 'PAS_SONAR', wait: false)
 				//sh 'ls- la'
                 	},
