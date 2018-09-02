@@ -14,16 +14,13 @@ node ('master') {
         		println upstream?.shortDescription
 
 
-			def printCausesRecursively(cause) {
-			     if (cause.class.toString().contains("UpstreamCause")) {
-         			println "This job was caused by " + cause.toString()
-         			for (upCause in cause.upstreamCauses) {
-             				printCausesRecursively(upCause)
-       				  }
-     				} else {
-         				println "Root cause : " + cause.toString()
-				     }
+			def build = Thread.currentThread().executable
+			def test = build.getUpstreamBuilds()
+			for (up in test)
+			{
+			manager.listener.logger.println "test build project: " + up
 			}
+
 
 
                 }
