@@ -3,18 +3,6 @@ import hudson.FilePath
 import jenkins.model.Jenkins
 
 node ('master') {
-		def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
-        	def job = upstream?.shortDescription
-		if(job == null) {
-		    println job
-		
-
-		stage('Version') {
-                echo 'Execuitng Version'
-        }
-	
-	} else {
-	    println "Job Triggered by User : [${user}]"
 
 	 try {
                 stage('Shoreside Production') {
@@ -49,13 +37,7 @@ node ('master') {
             if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
                 didTimeout = true
                 echo "Sorry! No input was received before timeout"
-            } else {
-                userInput = false
-                echo "Aborted by: [${user}]"
-            }
         }
 
-
-
-        } 
+      } 
 }
