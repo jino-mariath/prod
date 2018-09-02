@@ -3,7 +3,6 @@ import hudson.FilePath
 import jenkins.model.Jenkins
 
 node ('master') {
-	stage ('User') {
 		def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         	def job = upstream?.shortDescription
 		if(job != null) {
@@ -56,5 +55,4 @@ node ('master') {
 
 
         } 
-      }
 }
