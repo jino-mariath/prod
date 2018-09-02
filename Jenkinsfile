@@ -4,7 +4,7 @@ import jenkins.model.Jenkins
 
 node ('master') {
 
-	sh 'BUILD_ID=`ls -lt /approot/jenkins/jobs/PAS_PROD_Jenkinsfile/build/ | awk -F" " '{print $9}' | sed -n 2p`; USER_ID=`cat /approot/jenkins/jobs/PAS_PROD_Jenkinsfile/build/$BUILD_ID/log | grep -i started  | awk 'NF>1{print $NF}'`; echo $USER_ID'
+    sh ' ls -lah'
 
     try {
         stage('Shoreside Production') {
