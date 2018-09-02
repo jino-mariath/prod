@@ -12,9 +12,6 @@ node ('master') {
 	        }
 	    }
 
-	stage('Test Ship Sites'){
-		echo 'Deploying P@S code to 17 Test ship instance. '
-	
 		try {
  		  stage('end-to-end-tests') {
        			def e2e = build job:'end-to-end-tests', propagate: false
@@ -26,8 +23,7 @@ node ('master') {
      		  }
    		}catch (e) {
    			result = "FAIL" // make sure other exceptions are recorded as failure too
-		}
-	}
+
 
 	stage('deploy') {
 	   if (result.equals("SUCCESS")) {
