@@ -12,7 +12,17 @@ node ('master') {
 			def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         		println upstream?.shortDescription
 			def buildLog = currentBuild.rawBuild.log
-			println buildLog
+			println buildLog	
+			
+			def getCauser() {
+			  def build = currentBuild.rawBuild
+  				def upstreamCause
+  				while(upstreamCause = build.getCause(hudson.model.Cause$UpstreamCause)) {
+    				build = upstreamCause.upstreamRun
+  				}
+  				return build.getCause(hudson.model.Cause$UserIdCause).userId
+			}				
+
                 }
 	}
 }
