@@ -14,9 +14,7 @@ node ('master') {
         		println upstream?.shortDescription
 
 
-			def build = Thread.currentThread().executable
 			def test = build.getUpstreamBuilds()
-			println build
 			println test
 
 
