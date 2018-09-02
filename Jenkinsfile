@@ -24,7 +24,7 @@ node ('master') {
 				sleep 10
             			} catch (error) {
 					//currentBuild.result = 'FAILURE'
-					exho " Build Failed.'
+					exho 'Build Failed.'
 				}
                 	},
 
