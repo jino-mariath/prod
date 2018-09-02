@@ -17,15 +17,12 @@ node ('master') {
 		echo 'Deploying P@S code to 17 Test ship instance. '
 
 		parallel (
-			'PAS_RUBY': {
-			   try {
+			try {
+
+			stage ('PAS_RUBY') {
                 		echo 'Starting RUBY'
 				sh 'ls- la'
 				sleep 10
-            			} catch (error) {
-					currentBuild.result = 'UNSTABLE'
-					propagate: true
-				}
                 	},
 
 
@@ -35,7 +32,10 @@ node ('master') {
               		echo 'P@S code deployed to Dev site Successfully...'
               		sleep 10
         	      	},
-
+		} catch (error) {
+			 currentBuild.result = 'UNSTABLE'
+                         propagate: true
+		}
 		)
 	}
 
