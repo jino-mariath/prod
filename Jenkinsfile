@@ -35,11 +35,8 @@ node ('master') {
 			},
 
 			Deploy: {
-   				if (result.equals("SUCCESS")) {
-      				build 'deploy'
-   				} else {
+      				echo 'ls -lah'
       				echo "Cannot deploy without successful build" // it is important to have a deploy stage even here for the current visualization
-   				}
 			}
 		)
 			
