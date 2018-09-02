@@ -14,7 +14,8 @@ node ('master') {
 	    }
 
     		stage('build user') {
-        		def user = User.current()
+        		def user = build.causes[0].userId
+			//def user = User.current()
 			println user
      		}
 
