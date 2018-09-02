@@ -48,6 +48,7 @@ node ('master') {
             }
         }
 	} else {
+	    def user = err.getCauses()[0].getUser()
 	    println "Job Triggered by User : [${user}]"
         } 
       }
