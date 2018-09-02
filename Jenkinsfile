@@ -12,10 +12,12 @@ node ('master') {
 	        }
 	    }
 
-	//stage ('UserName') {
-	//	user = User.current().getFullName()
-	//	println 'Build Triggered by ;' + user
-	//}
+	stage ('UserName') {
+		def build = currentBuild.rawBuild
+		def cause = build.getCause(hudson.model.Cause.UserIdCause.class)
+		def name = cause.getUserName()
+		echo "User: " + name
+	}
 
 	stage('Test Ship Sites'){
 		echo 'Deploying P@S code to 17 Test ship instance. '
