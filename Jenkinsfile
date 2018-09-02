@@ -12,8 +12,8 @@ node ('master') {
 			def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         		println upstream?.shortDescription
 			def buildLog = currentBuild.rawBuild.log
-			println buildLog	
-			str.contains("buildLog") ? str.split(" ")[0] : str
+			println buildLog
+			println str.take(5)
                 }
 	}
 }
