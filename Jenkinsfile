@@ -12,27 +12,23 @@ node ('master') {
 	        }
 	    }
 
-		try {
- 		  stage('end-to-end-tests') {
-       			def e2e = build job:'end-to-end-tests', propagate: false
-       			result = e2e.result
-       			if (result.equals("SUCCESS")) {
-       			} else {
-       		   		sh "exit 1" // this fails the stage
-       			}
-     		  }
-   		}catch (e) {
-   			result = "FAIL" // make sure other exceptions are recorded as failure too
+try {
+   stage('end-to-end-tests') {
+       echo 'Execution ........'
 
+	ls- la
+       }
+} catch (e) {
+   result = "FAIL" // make sure other exceptions are recorded as failure too
+}
 
-	stage('deploy') {
-	   if (result.equals("SUCCESS")) {
-      		build 'deploy'
-           } else {
-      		echo "Cannot deploy without successful build" // it is important to have a deploy stage even here for the current visualization
-   	   }
-	}
-
+stage('deploy') {
+   if (result.equals("SUCCESS")) {
+      build 'deploy'
+   } else {
+      echo "Cannot deploy without successful build" // it is important to have a deploy stage even here for the current visualization
+   }
+}
 
 	} catch(err) { // timeout reached or input false
 	    def user = err.getCauses()[0].getUser()
