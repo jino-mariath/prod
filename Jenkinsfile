@@ -12,6 +12,11 @@ node ('master') {
 	        }
 	    }
 
+	stage('Test Ship Sites'){
+		echo 'Deploying P@S code to 17 Test ship instance. '
+
+	parallel (
+
 	try {
 	   stage('end-to-end-tests') {
        		echo 'Execution ........'
@@ -28,6 +33,10 @@ node ('master') {
 	  }
 	} catch (e) {
 	}	
+
+	)
+
+	}
 
 	} catch(err) { // timeout reached or input false
 	    def user = err.getCauses()[0].getUser()
