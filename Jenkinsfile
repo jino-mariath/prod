@@ -13,12 +13,6 @@ node ('master') {
 	        }
 	    }
 
-    		stage('build user') {
-        		def user = build.causes[0].userId
-			//def user = User.current()
-			println user
-     		}
-
 
 	stage('Test Ship Sites'){
 		echo 'Deploying P@S code to 17 Test ship instance. '
