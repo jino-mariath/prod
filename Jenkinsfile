@@ -16,10 +16,8 @@ node ('master') {
 		echo 'Deploying P@S code to 17 Test ship instance. '
 
 		parallel (
-			'PAS_RUBY': {
-
-				try {
-   				stage('end-to-end-tests') {
+			try {
+			  'PAS_RUBY': {
      				node {      
        				def e2e = build job:'end-to-end-tests', propagate: false
        				result = e2e.result
@@ -32,7 +30,6 @@ node ('master') {
 				} catch (e) {
    					result = "FAIL" // make sure other exceptions are recorded as failure too
 				}
-			}
 		)
 	}
 
