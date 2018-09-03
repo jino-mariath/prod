@@ -55,14 +55,13 @@ node ('master') {
   } 
   }	
 	currentBuild.result = 'SUCCESS'    
+	return
 }
 
 }
 
 node ('master') {
 
-if(job != null) 
-  {
 	try
            {
 	      stage ('Test')
@@ -85,4 +84,3 @@ if(job != null)
            { 
            } 
   }
-}
