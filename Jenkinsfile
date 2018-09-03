@@ -54,24 +54,31 @@ node ('master') {
   }    
  } 
 
-if(job != null) {
+if(job != null)
+ {
             println job
  
-	stage ('Regular') {
-	try {
-	println 'The Job Execues by: ' + job
-	echo ' Lets Start normal Execution'
+	stage ('Regular') 
+        {
+	try
+           {
+	      println 'The Job Execues by: ' + job
+	      echo ' Lets Start normal Execution'
 
-	stage ('Test') {
-	echo 'Lets Proceed'
-	}
+	      stage ('Test')
+              {
+	         echo 'Lets Proceed'
+	      }
 
-	stage ('Dev') {
-	echo 'Lets proceed to Dev site'
-	}
+	  //    stage ('Dev')
+            //  {
+	  //       echo 'Lets proceed to Dev site'
+	  //    }
 
-	} catch (error){ 
-	}
+	   }
+         catch (error)
+           { 
+           } 
 	
 
 	}
