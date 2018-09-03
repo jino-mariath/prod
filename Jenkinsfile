@@ -1,15 +1,16 @@
 #!/usr/bin/env groovy
 
 node ('master') {
+ env.DEV="deployment"
 
-    environment {
-        DEV = 'Development'
-        PROD = 'Production'
-    }
-        stage('Preparation') {
-                    echo "Environment " + ENV
-                echo ENV1
-                echo ENV2
-            }
+stage('plan') {
+  when {
+     environment name: 'DEV', value: 'deployment'
+  }
+  steps {
+     sh 'ls -lah'
+  }
+}
+
 }
 
