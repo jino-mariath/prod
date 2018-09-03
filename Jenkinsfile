@@ -49,22 +49,22 @@ node ('master') {
         }
 
       }
+   }
+  } 
+  }    
  }
-} 
-}    
-}
-        if(job != null) {
+}       
+
+node ('master') {
+
+	 if(job != null) {
             println job
 
-         try {
-                stage('Shoreside Production') {
-                timeout(time: 2, unit: 'MINUTES') {
-                        String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
-                        input message: 'Initiating Production release, Promote P@S Version : ' + shore_version +' to Shoreside Production, Shall we Proceed?',
-                         ok: 'Proceed!'
-                        }
-                }
-                stage ('Test Ship Sites'){
+		stage ('DEV') {
+		  echo ' Executing DEV'
+		}
+
+                stage ('Test Ship Sites') {
                         echo 'Deploying P@S code to 17 Test ship instance. '
                         parallel (
                                 PAS_RUBY: {
@@ -84,13 +84,6 @@ node ('master') {
                 echo 'Execuitng Version'
         }
 
-        } catch(err) { // timeout reached or input false
-            def user = err.getCauses()[0].getUser()
-            if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
-                didTimeout = true
-                echo "Sorry! No input was received before timeout"
-        }
 
       }
   }
-}
