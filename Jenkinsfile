@@ -55,17 +55,10 @@ node ('master') {
 }
 else {
 	
-	try {
         stage ('Dev Build') {
            echo 'Dev Build'
 	   echo 'For more details for this job please navigate to --> http://jenkins.cruises.princess.com:8080/job/PAS_DEV/lastBuild/console'
 	}
 
-    } catch(error) {
-        throw error
-    } finally {
-        
-    }
-   echo 'Execution Completed Successfully......!'
   }
 }
