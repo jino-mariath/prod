@@ -59,10 +59,10 @@ node ('master') {
 
 }
 
-if(job != null) 
-  {
 node ('master') {
 
+if(job != null) 
+  {
 	try
            {
 	      stage ('Test')
