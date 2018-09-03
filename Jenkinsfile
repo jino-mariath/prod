@@ -62,7 +62,7 @@ def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
                 echo "userId=${BUILD_USER_ID},fullName=${BUILD_USER},email=${BUILD_USER_EMAIL}"
                 def userId = env.BUILD_USER_ID
                 def userName = env.BUILD_USER
-                if((userId != "pc08301") {
+                if(userId != "pc08301") {
                         println ("Yes, Autherised User :" + userName)
 
         stage ('Dev Build') {
