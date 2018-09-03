@@ -4,7 +4,7 @@ node ('master') {
 
 	def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause) 
         def job = upstream?.shortDescription   
-        if(job == null) {                        
+        if(job != null) {                        
             println job
 		stage ('User') {
                 wrap([$class: 'BuildUser']) {
@@ -54,36 +54,3 @@ node ('master') {
   }    
  }
 }       
-
-node ('master') {
-
-	 if(job != null) {
-            println job
-
-		stage ('DEV') {
-		  echo ' Executing DEV'
-		}
-
-                stage ('Test Ship Sites') {
-                        echo 'Deploying P@S code to 17 Test ship instance. '
-                        parallel (
-                                PAS_RUBY: {
-                                echo 'Starting RUBY'
-                                def jobBuild = build(job: 'Test')
-                        },
-
-                                PAS_SUN: {
-                        echo 'Copying P@S package to Dev Site'
-                        echo 'Copying Deployment files...'
-                        echo 'P@S code deployed to Dev site Successfully...'
-                        sleep 10
-                        }
-                )
-        }
-        stage ('Exec Version') {
-                echo 'Execuitng Version'
-        }
-
-
-      }
-  }
