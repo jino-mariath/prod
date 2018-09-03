@@ -53,8 +53,13 @@ node ('master') {
   } 
   }    
  } else {
+
+	try {
 	println 'The Job Execues by: ' + job
 	echo ' Lets Start normal Execution'
+	} catch (error){ 
+	}
+	
 
 	}
 }       
