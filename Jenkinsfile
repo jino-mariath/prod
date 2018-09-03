@@ -9,7 +9,7 @@ node ('master') {
         if(job != null) {
             println job
 
-//	stage ('Shore Prod') {
+	stage ('Shore Prod') {
 	 try {
                 stage('Shoreside Production') {
                 timeout(time: 2, unit: 'MINUTES') {
@@ -46,7 +46,7 @@ node ('master') {
         }
 
       }
-//   } 
+   } 
     }else {
 	println "sorry, Normal. User"
    }
