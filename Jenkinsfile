@@ -4,12 +4,11 @@ import jenkins.model.Jenkins
 
 node ('master') {
 
-	wrap([$class: 'BuildUser']) {
-                echo "userId=${BUILD_USER_ID},fullName=${BUILD_USER},email=${BUILD_USER_EMAIL}"
-                def userId = env.BUILD_USER_ID
-                def userName = env.BUILD_USER
-                if((userId == "pc03069") || (userId == "pc05668") ||  (userId == "pc08300")) {
-                        println ("Yes, Autherised User :" + userName)
+	def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
+        def job = upstream?.shortDescription
+        if(job != null) {
+            println job
+
 //	stage ('Shore Prod') {
 	 try {
                 stage('Shoreside Production') {
