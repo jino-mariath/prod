@@ -57,6 +57,11 @@ node ('master') {
 	try {
 	println 'The Job Execues by: ' + job
 	echo ' Lets Start normal Execution'
+
+	stage ('Test') {
+	echo 'Lets Proceed'
+	}
+
 	} catch (error){ 
 	}
 	
