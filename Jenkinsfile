@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+ç#!/usr/bin/env groovy
 
 node ('master') {
 
@@ -53,11 +53,16 @@ node ('master') {
 } 
 }    
 }else {
-	println "sorry, Normal. User"
+	echo 'sorry, Normal User'
+	sleep 10
+
         stage('Version') {
          echo 'Execuitng Version'
 	 sleep 10
         }
+	stage('Test Ship Sites'){
+                        echo 'Deploying P@S code to 17 Test ship instance. '
+	}
 
    }
 }
