@@ -59,7 +59,8 @@ node ('master') {
 
 }
 
-
+if(job != null) 
+  {
 node ('master') {
 
 	try
@@ -84,3 +85,4 @@ node ('master') {
            { 
            } 
   }
+}
