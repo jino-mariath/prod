@@ -1,6 +1,10 @@
 #!/usr/bin/env groovy
 
 node ('master') {
+	def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
+        def job = upstream?.shortDescription
+        if(job == null) {
+            println job
 	 try {
                 stage('Shoreside Production') {
                 timeout(time: 2, unit: 'MINUTES') {
@@ -44,4 +48,5 @@ node ('master') {
         }
 
       }
+}
 }
