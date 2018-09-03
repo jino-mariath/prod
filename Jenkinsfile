@@ -56,6 +56,13 @@ node ('master') {
 //else {
 //	echo 'sorry, Normal User'
 //	sleep 10
+	
+	try {
+        stage ('Dev Build') {
+           echo 'Dev Build'
+	   echo 'For more details for this job please navigate to --> http://jenkins.cruises.princess.com:8080/job/PAS_DEV/lastBuild/console'
+	}
+
 
         stage('Version') {
          echo 'Execuitng Version'
@@ -65,5 +72,11 @@ node ('master') {
                         echo 'Deploying P@S code to 17 Test ship instance. '
 	}
 
+    } catch(error) {
+        throw error
+    } finally {
+        
+    }
+   echo 'Execution Completed Successfully......!'
 //   }
 }
