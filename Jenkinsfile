@@ -10,7 +10,7 @@ node ('master') {
                 def userName = env.BUILD_USER
                 if((userId == "pc03069") || (userId == "pc05668") ||  (userId == "pc08300")) {
                         println ("Yes, Autherised User :" + userName)
-	stage ('Shore Prod') {
+//	stage ('Shore Prod') {
 	 try {
                 stage('Shoreside Production') {
                 timeout(time: 2, unit: 'MINUTES') {
@@ -51,5 +51,5 @@ node ('master') {
     }else {
 	println "sorry, Normal. User"
    }
-}
+//}
 }
