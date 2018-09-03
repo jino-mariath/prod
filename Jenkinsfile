@@ -20,7 +20,7 @@ node ('master') {
                          ok: 'Proceed!'
                         }
                 }
-                stage ('Test Ship Sites'){
+                stage('Test Ship Sites') {
                         echo 'Deploying P@S code to 17 Test ship instance. '
                         parallel (
                                 PAS_RUBY: {
@@ -36,6 +36,7 @@ node ('master') {
                         }
                    )
         	}
+
         	stage('Exec Version') {
                 	echo 'Execuitng Version'
    			currentBuild.result = 'SUCCESS'
