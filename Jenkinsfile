@@ -25,7 +25,7 @@ node ('master') {
                        	 	parallel (
                                 	PAS_RUBY: {
                                 	echo 'Starting RUBY'
-                                	#def jobBuild = build(job: 'Test')
+                                	//def jobBuild = build(job: 'Test')
                         	},
 
                                 	PAS_SUN: {
