@@ -52,7 +52,8 @@ node ('master') {
       }
    }
   } 
-  }    
+  }	
+	currentBuild.result = 'SUCCESS'    
 }
 	try
            {
