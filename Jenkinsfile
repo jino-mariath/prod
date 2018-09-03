@@ -2,13 +2,19 @@
 
 node ('master') {
 
-	def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause) 
-        def job = upstream?.shortDescription   
-        if(job != null) {                        
-            println job
+	def upStreamProjects = build.getParent().getUpstreamProjects()
 
-	   stage ('Test') {
-		echo "Hello"
-	   }
- } 
+	println "Found ${upStreamProjects.size()} upstream projects"
+
+	upStreamProjects.each { p -> println "upstream project: ${p.getName()}" }
+
+	//def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause) 
+        //def job = upstream?.shortDescription   
+        //if(job != null) {                        
+         //   println job
+
+	   //stage ('Test') {
+//		echo "Hello"
+//	   }
+ //} 
 }
