@@ -55,7 +55,8 @@ node ('master') {
 }else {
 	println "sorry, Normal. User"
         stage('Version') {
-                echo 'Execuitng Version'
+         echo 'Execuitng Version'
+	 sleep 10
         }
 
    }
