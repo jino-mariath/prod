@@ -55,25 +55,14 @@ node ('master') {
 }
         if(job != null) {
             println job
-                stage ('User') {
-                wrap([$class: 'BuildUser']) {
-                echo "userId=${BUILD_USER_ID},fullName=${BUILD_USER},email=${BUILD_USER_EMAIL}"
-                def userId = env.BUILD_USER_ID
-                def userName = env.BUILD_USER
-                if(userId != "pc08301") {
-                        println ("Yes, Autherised User :" + userName)
+        	stage ('Dev Build') {
+           	echo 'Dev Build'
+	   	echo 'For more details for this job please navigate to --> http://jenkins.cruises.princess.com:8080/job/PAS_DEV/lastBuild/console'
+		}
 
-        stage ('Dev Build') {
-           echo 'Dev Build'
-	   echo 'For more details for this job please navigate to --> http://jenkins.cruises.princess.com:8080/job/PAS_DEV/lastBuild/console'
-	}
-
-	stage('Test Ship Sites'){
+		stage('Test Ship Sites'){
                         echo 'Deploying P@S code to 17 Test ship instance. '
-	}
+		}
 
-  }
-}
-}
-}
+	}
 }
