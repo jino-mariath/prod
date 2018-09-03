@@ -39,6 +39,7 @@ node ('master') {
         }
         stage ('Exec Version') {
                 echo 'Execuitng Version'
+   		currentBuild.result = 'SUCCESS'
         }
 
         } catch(err) { // timeout reached or input false
@@ -53,8 +54,6 @@ node ('master') {
   } 
   }    
 }
-	stage ('Regular') 
-        {
 	try
            {
 	      println 'The Job Execues by: ' + job
@@ -74,7 +73,4 @@ node ('master') {
          catch (error)
            { 
            } 
-	
-
-	}
   }
