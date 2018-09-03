@@ -1,8 +1,6 @@
 #!/usr/bin/env groovy
 
 node ('master') {
-
-
 	def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause) 
         def job = upstream?.shortDescription   
         if(job == null) {                        
@@ -36,12 +34,13 @@ node ('master') {
                         echo 'P@S code deployed to Dev site Successfully...'
                         sleep 10
                         }
-                )
-        }
-        stage ('Exec Version') {
-                echo 'Execuitng Version'
-   		currentBuild.result = 'SUCCESS'
-        }
+                   )
+        	}
+        	stage ('Exec Version') {
+                	echo 'Execuitng Version'
+   			currentBuild.result = 'SUCCESS'
+			return
+        	}
 
         } catch(err) { // timeout reached or input false
             def user = err.getCauses()[0].getUser()
@@ -49,15 +48,11 @@ node ('master') {
                 didTimeout = true
                 echo "Sorry! No input was received before timeout"
         }
-
       }
    }
   } 
   }	
-	currentBuild.result = 'SUCCESS'    
-	return
 }
-
 }
 
 node ('master') {
