@@ -53,9 +53,7 @@ node ('master') {
 } 
 }    
 }
-//else {
-//	echo 'sorry, Normal User'
-//	sleep 10
+else {
 	
 	try {
         stage ('Dev Build') {
@@ -78,5 +76,5 @@ node ('master') {
         
     }
    echo 'Execution Completed Successfully......!'
-//   }
+  }
 }
