@@ -36,7 +36,7 @@ node ('master') {
                         }
                    )
         	}
-        	stage ('Exec Version') {
+        	stage('Exec Version') {
                 	echo 'Execuitng Version'
    			currentBuild.result = 'SUCCESS'
 			return
