@@ -52,5 +52,7 @@ node ('master') {
    }
   } 
   }    
- }
+ } else {
+	println 'The Job Execues by: ' + job
+	}
 }       
