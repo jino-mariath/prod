@@ -47,9 +47,9 @@ node ('master') {
         }
 
       }
-   } 
+//   } 
     }else {
 	println "sorry, Normal. User"
    }
-//}
+}
 }
