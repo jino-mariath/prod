@@ -56,7 +56,6 @@ node ('master') {
         if(job != null) {
             println job
 
-	                        println ("Yes, Autherised User :" + userName)
          try {
                 stage('Shoreside Production') {
                 timeout(time: 2, unit: 'MINUTES') {
