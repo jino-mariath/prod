@@ -58,8 +58,6 @@ if(job == null)
  {
             println job
  
-	stage ('Regular') 
-        {
 	try
            {
 	      println 'The Job Execues by: ' + job
@@ -82,6 +80,5 @@ if(job == null)
 	
 
 	}
-  }
 
 }       
