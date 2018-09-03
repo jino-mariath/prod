@@ -52,9 +52,10 @@ node ('master') {
  }
 } 
 }    
-}else {
-	echo 'sorry, Normal User'
-	sleep 10
+}
+//else {
+//	echo 'sorry, Normal User'
+//	sleep 10
 
         stage('Version') {
          echo 'Execuitng Version'
@@ -64,5 +65,5 @@ node ('master') {
                         echo 'Deploying P@S code to 17 Test ship instance. '
 	}
 
-   }
+//   }
 }
