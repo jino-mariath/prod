@@ -53,7 +53,8 @@ node ('master') {
   } 
   }    
  } else {
-
+ 
+	stage ('user') {
 	try {
 	println 'The Job Execues by: ' + job
 	echo ' Lets Start normal Execution'
@@ -71,4 +72,6 @@ node ('master') {
 	
 
 	}
+  }
+
 }       
