@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
-import hudson.FilePath
-import jenkins.model.Jenkins
+//import hudson.FilePath
+//import jenkins.model.Jenkins
 
 node ('master') {
 
@@ -9,12 +9,12 @@ node ('master') {
         def job = upstream?.shortDescription
         if(job == null) {
             println job
-		env.DEV = 'development'
+		env.PROD = 'production'
 	}
 }
 
 node ('master') {
- if (env.DEV == "development") {
+ if (env.PROD == "production") {
 
 	try {
                 stage('Shoreside Production') {
