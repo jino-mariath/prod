@@ -6,5 +6,9 @@ node ('master') {
         def job = upstream?.shortDescription   
         if(job != null) {                        
             println job
+
+	   stage ('Test') {
+		echo "Hello"
+	   }
  } 
 }
