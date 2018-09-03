@@ -52,9 +52,12 @@ node ('master') {
    }
   } 
   }    
- } else {
+ } 
+
+if(job != null) {
+            println job
  
-	stage ('user') {
+	stage ('Regular') {
 	try {
 	println 'The Job Execues by: ' + job
 	echo ' Lets Start normal Execution'
