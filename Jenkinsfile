@@ -1,4 +1,4 @@
-ç#!/usr/bin/env groovy
+#!/usr/bin/env groovy
 
 node ('master') {
 
