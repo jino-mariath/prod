@@ -62,6 +62,10 @@ node ('master') {
 	echo 'Lets Proceed'
 	}
 
+	stage ('Dev') {
+	echo 'Lets proceed to Dev site'
+	}
+
 	} catch (error){ 
 	}
 	
