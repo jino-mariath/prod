@@ -51,4 +51,3 @@ node ('master') {
 	println "sorry, Normal. User"
    }
 }
-}
