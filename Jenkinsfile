@@ -27,8 +27,13 @@ node ('master') {
 		sleep 5
                 echo 'P@S Shore side Release bas been completed successfully with P@S Version :' + shore_prod
            }
+	
+	} catch(error) {
+	  def user = error.getCauses()[0].getUser()
+          }   
 
-           stage('Shore Smoke Test') {
+	try {
+	stage('Shore Smoke Test') {
                 echo 'Cheking Shore Production site status after deployment. '
                 sh 'sh /approot/jenkins/jobs/PAS_DEV/workspace/PAS/ci/shell_scripts/bin/pax_intranet_smoke_test.sh https://princessatsea.cruises.princess.com/'
            }
