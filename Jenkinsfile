@@ -9,14 +9,12 @@ node ('master') {
  if (env.PROD == "production") {
 	
 
-	def shipRelease {
-	    step ([
-		$class: 'RUBY',
-        	projectName: projectName,
-        	filter: '**/**.mib',
-        	fingerprintArtifacts: true, 
-        	flatten: true
-    		]);
+	def shipRelease() {
+	    [
+		stage('RUBY') {
+			echo 'Executing function.....'
+			sh 'ls -lah'
+		}]
 	}
 
 
@@ -32,7 +30,7 @@ node ('master') {
 
 	   stage('Test') {
 		echo "Calling function"
-		shopRelease
+		shipRelease
 	   }
 
 
