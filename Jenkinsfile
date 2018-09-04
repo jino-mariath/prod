@@ -17,6 +17,16 @@ node ('master') {
                  }
            }
 
+
+
+	    } catch(err) { // timeout reached or input false
+            def user = err.getCauses()[0].getUser()
+            if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
+                didTimeout = true
+                echo "Sorry! No input was received before timeout"
+        }
+      }
+
            stage('Shore Production') {
                 String shore_prod = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
                 echo 'Staring Shore side Production Release, P@S Version :' + shore_prod
@@ -33,12 +43,12 @@ node ('master') {
 	  
 
 
-    } catch(err) { // timeout reached or input false
-            def user = err.getCauses()[0].getUser()
-            if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
-                didTimeout = true
-                echo "Sorry! No input was received before timeout"
-        }
-      }
+//    } catch(err) { // timeout reached or input false
+//           def user = err.getCauses()[0].getUser()
+//            if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
+//                didTimeout = true
+//                echo "Sorry! No input was received before timeout"
+//        }
+//      }
   }
 }
