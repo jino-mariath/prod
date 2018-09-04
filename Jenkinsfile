@@ -38,10 +38,8 @@ node ('master') {
            }
 	
 	} catch(error) {
-        	throw error
-    		}finally {
-		echo 'Error executing fiel'
-	}
+        	
+    	}
 
 
     } catch(err) { // timeout reached or input false
