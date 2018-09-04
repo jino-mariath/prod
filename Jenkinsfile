@@ -8,7 +8,7 @@ node ('master') {
 	try {
            stage('Production Release') {
            timeout(time: 2, unit: 'MINUTES') {
-                 String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_GATE/pas.version').text
+                 String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
                  input message: 'Initiating Production release, Promote P@S Version : ' + shore_version +' to Shoreside Production, Shall we Proceed?',
                  ok: 'Proceed!'
                  }
