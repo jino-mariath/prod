@@ -5,17 +5,6 @@ import jenkins.model.Jenkins
 
 node ('master') {
 
-        def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
-        def job = upstream?.shortDescription
-        if(job == null) {
-            println job
-                env.PROD = 'production'
-        }
-}
-
-node ('master') {
- if (env.PROD == "production") {
-
 	try {
            stage('Production Release') {
            timeout(time: 2, unit: 'MINUTES') {
@@ -53,5 +42,4 @@ node ('master') {
                 echo "Sorry! No input was received before timeout"
         }
       }
-}
 }
