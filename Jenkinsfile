@@ -61,6 +61,7 @@ node ('master') {
 
    try {
 	   stage ('Ship Release') {
+		String shore_prod = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
 		echo 'Starting Passenger Ship Release P@S Version :' + shore_prod
 	   
 		parallel ('CARIBBEAN': {
