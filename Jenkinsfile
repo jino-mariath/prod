@@ -43,7 +43,7 @@ node ('master') {
 	
 	stage('Version') {
 	echo 'Deployment Completed'
-	)
+	}
 
     } catch(err) { // timeout reached or input false
            def user = err.getCauses()[0].getUser()
