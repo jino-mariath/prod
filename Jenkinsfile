@@ -25,12 +25,12 @@ node ('master') {
 		parallel ('RUB': {
 			sleep 5
 			sh 'ls- la'
-			}
+			},
 
 			ROYAL:  {
 		echo "Calling Royal"
 		sh 'ls- la'
-	   	}
+	   	},
 
 
            		SUN: {
@@ -39,7 +39,7 @@ node ('master') {
                 //build 'PAS_SHORE_PRO'
 		sleep 5
                 echo 'P@S Shore side Release bas been completed successfully with P@S Version :' + shore_prod
-           	}
+           	},
 	
 			STAR: {
                 echo 'Cheking Shore Production site status after deployment. '
