@@ -20,25 +20,33 @@ node ('master') {
 
 	try {
 
-	   stage('Test') {
-		echo "Calling function"
+	   stage('Ship Release') {
+		echo 'Starting Ship release .......'
+		parallel ('RUB': {
+			sleep 5
+			sh 'ls- la'
+			}
+
+			ROYAL:  {
+		echo "Calling Royal"
 		sh 'ls- la'
-	   }
+	   	}
 
 
-           stage('Shore Production') {
+           		SUN: {
                 String shore_prod = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
                 echo 'Staring Shore side Production Release, P@S Version :' + shore_prod
                 //build 'PAS_SHORE_PRO'
 		sleep 5
                 echo 'P@S Shore side Release bas been completed successfully with P@S Version :' + shore_prod
-           }
+           	}
 	
-	stage('Shore Smoke Test') {
+			STAR: {
                 echo 'Cheking Shore Production site status after deployment. '
                 sh 'sh /approot/jenkins/jobs/PAS_DEV/workspace/PAS/ci/shell_scripts/bin/pax_intranet_smoke_test.sh https://princessatsea.cruises.princess.com/'
-           }
-	
+           	}
+	   )
+	}
 	} catch(error) {
         	
     	}
