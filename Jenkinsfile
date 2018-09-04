@@ -20,7 +20,6 @@ node ('master') {
 
 	   stage('Test') {
 		echo "Calling function"
-		shipRelease
 	   }
 
 
