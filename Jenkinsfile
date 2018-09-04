@@ -18,8 +18,6 @@ node ('master') {
            }
 
 
-	try {
-
            stage('Shore Production') {
                 String shore_prod = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
                 echo 'Staring Shore side Production Release, P@S Version :' + shore_prod
@@ -28,29 +26,11 @@ node ('master') {
                 echo 'P@S Shore side Release bas been completed successfully with P@S Version :' + shore_prod
            }
 	
-	} catch(error) {
-	  def user = error.getCauses()[0].getUser()
-          }   
-
-	try {
 	stage('Shore Smoke Test') {
                 echo 'Cheking Shore Production site status after deployment. '
                 sh 'sh /approot/jenkins/jobs/PAS_DEV/workspace/PAS/ci/shell_scripts/bin/pax_intranet_smoke_test.sh https://princessatsea.cruises.princess.com/'
            }
 	
-	} catch(error) { // timeout reached or input false
-           def user = error.getCauses()[0].getUser()
-            if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
-                didTimeout = true
-                echo "Sorry! No input was received before timeout"
-          }
-        }
-
-
-	stage('Ship Version') {
-		echo 'Checking Version'
-		sleep 5
-	}	  
 
 
     } catch(err) { // timeout reached or input false
