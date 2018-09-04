@@ -15,7 +15,6 @@ node ('master') {
               }
 
 	   stage('Shore Production') {
-		sh 'rsync -az /approot/jenkins/jobs/PAS_SHORE_GATE/pas.version /approot/jenkins/jobs//PAS_SHORE_PRO/'
 		String shore_prod = new File('/var/lib/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
 		echo 'Staring Shore side Production Release, P@S Version :' + shore_prod
 		//build 'PAS_SHORE_PRO'
