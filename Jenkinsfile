@@ -22,6 +22,7 @@ node ('master') {
 
 	   stage('Test') {
 		echo "Calling function"
+		sh 'ls- la'
 	   }
 
 
