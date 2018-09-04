@@ -7,6 +7,19 @@ env.PROD='production'
 
 node ('master') {
  if (env.PROD == "production") {
+	
+
+	def shipRelease {
+	    step ([
+		$class: 'RUBY',
+        	projectName: projectName,
+        	filter: '**/**.mib',
+        	fingerprintArtifacts: true, 
+        	flatten: true
+    		]);
+	}
+
+
 
         try {
            stage('Production Release') {
@@ -16,6 +29,11 @@ node ('master') {
                  ok: 'Proceed!'
                  }
            }
+
+	   stage('Test') {
+		echo "Calling function"
+		shopRelease
+	   }
 
 
            stage('Shore Production') {
