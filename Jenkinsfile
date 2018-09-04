@@ -53,5 +53,5 @@ node ('master') {
                 echo "Sorry! No input was received before timeout"
         }
       }
-
+}
 }
