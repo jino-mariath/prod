@@ -40,6 +40,7 @@ node ('master') {
         }
 
 	stage ('Shore Lab & Acquia Deployment') {
+		String shore_prod = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
 		echo 'Deploying P@S Version : ' + shore_prod +' to Ship Labs, Acquia and Ship Clone sites '
 		
 		parallel ('P@S Acquia': {
