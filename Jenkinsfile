@@ -15,7 +15,7 @@ node ('master') {
               }
 
 	   stage('Shore Production') {
-		String shore_prod = new File('/var/lib/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
+		String shore_prod = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
 		echo 'Staring Shore side Production Release, P@S Version :' + shore_prod
 		//build 'PAS_SHORE_PRO'
 		sleep 5
