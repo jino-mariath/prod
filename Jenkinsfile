@@ -37,7 +37,9 @@ node ('master') {
                 sh 'sh /approot/jenkins/jobs/PAS_DEV/workspace/PAS/ci/shell_scripts/bin/pax_intranet_smoke_test.sh https://princessatsea.cruises.princess.com/'
            }
 	
-	} finally {
+	} catch(error) {
+        	throw error
+    		}finally {
 		echo 'Error executing fiel'
 	}
 
