@@ -64,7 +64,7 @@ node ('master') {
 	shoreProduction()
 
 		
-sh / ----- => Ship Release <= ----
+// ----- => Ship Release <= ----
 
    try {
 	   stage ('Ship Release') {
