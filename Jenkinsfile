@@ -39,34 +39,8 @@ def shoreProduction() {
 	}
 }
 
+def shipProduction() {
 
-
-node ('master') {
-
-        def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
-        def job = upstream?.shortDescription
-        if(job == null) {
-            println job
-                env.PROD = 'production'
-        }
-}
-
-node ('master') {
- if (env.PROD == "production") {
-   try {
-	stage ('Production Release') {
-           timeout(time: 2, unit: 'MINUTES') {
-                 String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_GATE/pas.version').text
-                 input message: 'Initiating Production release, Promote P@S Version : ' + shore_version +' to Shoreside Production, Shall we Proceed?',
-                 ok: 'Proceed!'
-                 }
-              }
-	shoreProduction()
-
-		
-// ----- => Ship Release <= ----
-
-   try {
 	   stage ('Ship Release') {
 		String shore_prod = new File('/approot/jenkins/jobs/PAS_SHORE_PRO/pas.version').text
 		echo 'Starting Passenger Ship Release P@S Version :' + shore_prod
@@ -142,6 +116,36 @@ node ('master') {
 		)
 
 	   }
+}
+
+node ('master') {
+
+        def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
+        def job = upstream?.shortDescription
+        if(job == null) {
+            println job
+                env.PROD = 'production'
+        }
+}
+
+node ('master') {
+ if (env.PROD == "production") {
+   try {
+	stage ('Production Release') {
+           timeout(time: 2, unit: 'MINUTES') {
+                 String shore_version = new File('/approot/jenkins/jobs/PAS_SHORE_GATE/pas.version').text
+                 input message: 'Initiating Production release, Promote P@S Version : ' + shore_version +' to Shoreside Production, Shall we Proceed?',
+                 ok: 'Proceed!'
+                 }
+              }
+	shoreProduction()
+
+		
+// ----- => Ship Release <= ----
+
+   try {
+
+	shipProduction()
 
 	} catch(error) {
 
